@@ -11,7 +11,7 @@ import openfl.utils.Assets as OpenFlAssets;
 #end
 
 class School extends BaseStage
-{
+{if(!ClientPrefs.data.ultralowQuality) {
 	var bgGirls:BackgroundGirls;
 	override function create()
 	{
@@ -155,4 +155,5 @@ class School extends BaseStage
 			}
 		});
 	}
+ }
 }
