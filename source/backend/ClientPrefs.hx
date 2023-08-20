@@ -11,13 +11,13 @@ class SaveVariables {
 	public var downScroll:Bool = false;
 	public var middleScroll:Bool = false;
 	public var opponentStrums:Bool = true;
-	public var showFPS:Bool = true;
+	public var showFPS:Bool = false;
 	public var flashing:Bool = true;
 	public var autoPause:Bool = true;
 	public var antialiasing:Bool = true;
 	public var noteSkin:String = 'Default';
 	public var splashSkin:String = 'Psych';
-	public var splashAlpha:Float = 0.6;
+	public var splashAlpha:Float = 0.5;
 	public var lowQuality:Bool = false;
 	public var shaders:Bool = true;
 	public var cacheOnGPU:Bool = #if !switch false #else true #end; //From Stilic
@@ -40,24 +40,14 @@ class SaveVariables {
 	public var timeBarType:String = 'Time Left';
 	public var scoreZoom:Bool = true;
 	public var noReset:Bool = false;
-	public var healthBarAlpha:Float = 1;
+	public var healthBarAlpha:Float = 0.7;
 	public var hitsoundVolume:Float = 0;
-	public var pauseMusic:String = 'Tea Time';
+	public var pauseMusic:String = 'breakfast';
 	public var checkForUpdates:Bool = true;
 	public var comboStacking:Bool = true;
 	public var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
-		'scrolltype' => 'multiplicative', 
-		// anyone reading this, amod is multiplicative speed mod, cmod is constant speed mod, and xmod is bpm based speed mod.
-		// an amod example would be chartSpeed * multiplier
-		// cmod would just be constantSpeed = chartSpeed
-		// and xmod basically works by basing the speed on the bpm.
-		// iirc (beatsPerSecond * (conductorToNoteDifference / 1000)) * noteSize (110 or something like that depending on it, prolly just use note.height)
-		// bps is calculated by bpm / 60
-		// oh yeah and you'd have to actually convert the difference to seconds which I already do, because this is based on beats and stuff. but it should work
-		// just fine. but I wont implement it because I don't know how you handle sustains and other stuff like that.
-		// oh yeah when you calculate the bps divide it by the songSpeed or rate because it wont scroll correctly when speeds exist.
-		// -kade
+		'scrolltype' => 'multiplicative',
 		'songspeed' => 1.0,
 		'healthgain' => 1.0,
 		'healthloss' => 1.0,
@@ -87,7 +77,6 @@ class ClientPrefs {
 
 	//Every key has two binds, add your key bind down here and then add your control on options/ControlsSubState.hx and Controls.hx
 	public static var keyBinds:Map<String, Array<FlxKey>> = [
-		//Key Bind, Name for ControlsSubState
 		'note_up'		=> [W, UP],
 		'note_left'		=> [A, LEFT],
 		'note_down'		=> [S, DOWN],
@@ -185,7 +174,6 @@ class ClientPrefs {
 
 		for (key in Reflect.fields(data)) {
 			if (key != 'gameplaySettings' && Reflect.hasField(FlxG.save.data, key)) {
-				//trace('loaded variable: $key');
 				Reflect.setField(data, key, Reflect.field(FlxG.save.data, key));
 			}
 		}
@@ -211,8 +199,7 @@ class ClientPrefs {
 			for (name => value in savedMap)
 				data.gameplaySettings.set(name, value);
 		}
-		
-		// flixel automatically saves your volume!
+
 		if(FlxG.save.data.volume != null)
 			FlxG.sound.volume = FlxG.save.data.volume;
 		if (FlxG.save.data.mute != null)
