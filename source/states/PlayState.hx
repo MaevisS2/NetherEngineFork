@@ -3431,6 +3431,9 @@ class PlayState extends MusicBeatState
 						case 'toastie':
 							unlock = (/*ClientPrefs.data.framerate <= 60 &&*/ !ClientPrefs.data.shaders && ClientPrefs.data.lowQuality && !ClientPrefs.data.antialiasing);
 
+						case 'The Real toastie':
+							unlock = (/*ClientPrefs.data.framerate <= 60 &&*/ !ClientPrefs.data.shaders && ClientPrefs.data.ultralowQuality && !ClientPrefs.data.antialiasing);
+
 						case 'debugger':
 							unlock = (Paths.formatToSongPath(SONG.song) == 'test' && !usedPractice);
 					}

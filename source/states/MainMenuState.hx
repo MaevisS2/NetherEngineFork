@@ -14,6 +14,14 @@ import objects.AchievementPopup;
 import states.editors.MasterEditorMenu;
 import options.OptionsState;
 
+#if LUA_ALLOWED
+import psychlua.*;
+#else
+import psychlua.FunkinLua;
+import psychlua.LuaUtils;
+import psychlua.HScript;
+#end
+
 class MainMenuState extends MusicBeatState
 {
 	public static var netherEngineVersion:String = '0.0.1'; //This is also used for Discord RPC
