@@ -26,7 +26,7 @@ class GraphicsSettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Ultra Low Quality', //Name
-			'it removes everything.', //Description
+			'It removes everything.', //Description
 			'ultralowQuality', //Save data variable name
 			'bool'); //Variable type
 		addOption(option);
