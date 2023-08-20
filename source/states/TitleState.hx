@@ -453,12 +453,12 @@ class TitleState extends MusicBeatState
 					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
 				case 2:
-					createCoolText(['Neather engine by'], 40);
+					createCoolText(['Nether engine by'], 40);
 				case 4:
-					addMoreText('Imevis', 40);
+					addMoreText('Mevi', 40);
 					addMoreText('Marshverso', 40);
 					addMoreText('Mikael', 40);
-					addMoreText('present');
+					addMoreText('present', 40);
 				case 5:
 					deleteCoolText();
 				case 6:
