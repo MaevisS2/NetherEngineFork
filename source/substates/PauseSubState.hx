@@ -14,21 +14,21 @@ import options.OptionsState;
 
 class PauseSubState extends MusicBeatSubstate
 {
-	var grpMenuShit:FlxTypedGroup<Alphabet>;
+	public var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = [];
-	var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Options', 'Exit to menu'];
-	var difficultyChoices = [];
-	var curSelected:Int = 0;
+	public var menuItems:Array<String> = [];
+	public var menuItemsOG:Array<String> = ['Resume', 'Restart Song', 'Change Difficulty', 'Options', 'Exit to menu'];
+	public var difficultyChoices = [];
+	public var curSelected:Int = 0;
 
-	var pauseMusic:FlxSound;
-	var practiceText:FlxText;
-	var skipTimeText:FlxText;
-	var skipTimeTracker:Alphabet;
-	var curTime:Float = Math.max(0, Conductor.songPosition);
+	public var pauseMusic:FlxSound;
+	public var practiceText:FlxText;
+	public var skipTimeText:FlxText;
+	public var skipTimeTracker:Alphabet;
+	public var curTime:Float = Math.max(0, Conductor.songPosition);
 
-	var missingTextBG:FlxSprite;
-	var missingText:FlxText;
+	public var missingTextBG:FlxSprite;
+	public var missingText:FlxText;
 
 	public static var songName:String = '';
 
