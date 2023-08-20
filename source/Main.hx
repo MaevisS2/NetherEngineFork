@@ -35,15 +35,17 @@ class Main extends Sprite
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
 
-
+	
+	
 	public static var fpsVar:FPS;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
 
 	public static function main():Void
-	{
+	{	
 		Lib.current.addChild(new Main());
+		//FlxG.game.soundTray.volumeUpSound = 'volumeChange';
 	}
 
 	public function new()
