@@ -20,7 +20,8 @@ class MasterEditorMenu extends MusicBeatState
 		'Menu Character Editor',
 		'Dialogue Editor',
 		'Dialogue Portrait Editor',
-		'Note Splash Debug'
+		'Note Splash Debug',
+		'Stage Editor'
 	];
 	private var grpTexts:FlxTypedGroup<Alphabet>;
 	private var directories:Array<String> = [null];
@@ -122,6 +123,8 @@ class MasterEditorMenu extends MusicBeatState
 					LoadingState.loadAndSwitchState(new DialogueCharacterEditorState(), false);
 				case 'Note Splash Debug':
 					LoadingState.loadAndSwitchState(new NoteSplashDebugState());
+				case 'Stage Editor':
+					LoadingState.loadAndSwitchState(new StageEditor());
 			}
 			FlxG.sound.music.volume = 0;
 			#if PRELOAD_ALL
@@ -173,11 +176,11 @@ class MasterEditorMenu extends MusicBeatState
 	
 		WeekData.setDirectoryFromWeek();
 		if(directories[curDirectory] == null || directories[curDirectory].length < 1)
-			directoryTxt.text = '< No Mod Directory Loaded >';
+			directoryTxt.text = '< null >';
 		else
 		{
 			Mods.currentModDirectory = directories[curDirectory];
-			directoryTxt.text = '< Loaded Mod Directory: ' + Mods.currentModDirectory + ' >';
+			directoryTxt.text = '< ' + Mods.currentModDirectory + ' >';
 		}
 		directoryTxt.text = directoryTxt.text.toUpperCase();
 	}

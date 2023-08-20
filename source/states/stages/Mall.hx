@@ -3,7 +3,7 @@ package states.stages;
 import states.stages.objects.*;
 
 class Mall extends BaseStage
-{
+{if(!ClientPrefs.data.ultralowQuality) {
 	var upperBoppers:BGSprite;
 	var bottomBoppers:MallCrowd;
 	var santa:BGSprite;
@@ -99,4 +99,5 @@ class Mall extends BaseStage
 		}
 		else endSong();
 	}
+ }
 }
