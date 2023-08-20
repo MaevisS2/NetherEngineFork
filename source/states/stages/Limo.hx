@@ -13,7 +13,7 @@ enum HenchmenKillState
 }
 
 class Limo extends BaseStage
-{if(!ClientPrefs.data.ultralowQuality) {
+{
 	var grpLimoDancers:FlxTypedGroup<BackgroundDancer>;
 	var fastCar:BGSprite;
 	var fastCarCanDrive:Bool = true;
@@ -278,4 +278,3 @@ class Limo extends BaseStage
 		}
 	}
  }
-}

@@ -3,7 +3,7 @@ package states.stages;
 import flixel.math.FlxPoint;
 
 class Spooky extends BaseStage
-{if(!ClientPrefs.data.ultralowQuality) {
+{
 	var halloweenBG:BGSprite;
 	var halloweenWhite:BGSprite;
 	override function create()
@@ -116,4 +116,3 @@ class Spooky extends BaseStage
 		});
 	}
  }
-}

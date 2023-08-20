@@ -9,7 +9,7 @@ import substates.GameOverSubstate;
 import objects.Character;
 
 class Tank extends BaseStage
-{if(!ClientPrefs.data.ultralowQuality) {
+{
 	var tankWatchtower:BGSprite;
 	var tankGround:BackgroundTank;
 	var tankmanRun:FlxTypedGroup<TankmenBG>;
@@ -437,4 +437,3 @@ class Tank extends BaseStage
 		}
 	}
  }
-}

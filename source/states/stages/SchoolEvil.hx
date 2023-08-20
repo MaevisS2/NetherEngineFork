@@ -12,7 +12,7 @@ import openfl.utils.Assets as OpenFlAssets;
 #end
 
 class SchoolEvil extends BaseStage
-{if(!ClientPrefs.data.ultralowQuality) {
+{
 	override function create()
 	{
 		var _song = PlayState.SONG;
@@ -163,4 +163,3 @@ class SchoolEvil extends BaseStage
 		});
 	}
  }
-}

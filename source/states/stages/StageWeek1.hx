@@ -4,7 +4,7 @@ import states.stages.objects.*;
 import objects.Character;
 
 class StageWeek1 extends BaseStage
-{if(!ClientPrefs.data.ultralowQuality) {
+{
 	var dadbattleBlack:BGSprite;
 	var dadbattleLight:BGSprite;
 	var dadbattleFog:DadBattleFog;
@@ -95,4 +95,3 @@ class StageWeek1 extends BaseStage
 		}
 	}
  }
-}

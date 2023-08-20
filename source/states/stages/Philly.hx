@@ -4,7 +4,7 @@ import states.stages.objects.*;
 import objects.Character;
 
 class Philly extends BaseStage
-{if(!ClientPrefs.data.ultralowQuality) {
+{
 	var phillyLightsColors:Array<FlxColor>;
 	var phillyWindow:BGSprite;
 	var phillyStreet:BGSprite;
@@ -213,4 +213,3 @@ class Philly extends BaseStage
 		FlxG.camera.flash(color, 0.15, null, true);
 	}
  }
-}
