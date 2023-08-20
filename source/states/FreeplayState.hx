@@ -17,6 +17,14 @@ import substates.ResetScoreSubState;
 import sys.FileSystem;
 #end
 
+#if LUA_ALLOWED
+import psychlua.*;
+#else
+import psychlua.FunkinLua;
+import psychlua.LuaUtils;
+import psychlua.HScript;
+#end
+
 class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
