@@ -1,7 +1,7 @@
 package;
 
 import flixel.graphics.FlxGraphic;
-
+import flixel.system.ui.FlxSoundTray;
 import flixel.FlxGame;
 import flixel.FlxState;
 import openfl.Assets;
@@ -35,9 +35,11 @@ class Main extends Sprite
 		startFullscreen: false // if the game should start at fullscreen mode
 	};
 
+
 	public static var fpsVar:FPS;
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
+
 
 	public static function main():Void
 	{
