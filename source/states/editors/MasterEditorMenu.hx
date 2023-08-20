@@ -123,6 +123,8 @@ class MasterEditorMenu extends MusicBeatState
 					LoadingState.loadAndSwitchState(new DialogueCharacterEditorState(), false);
 				case 'Note Splash Debug':
 					LoadingState.loadAndSwitchState(new NoteSplashDebugState());
+				case 'Note Splash Debug':
+					LoadingState.loadAndSwitchState(new StageEditor());
 			}
 			FlxG.sound.music.volume = 0;
 			#if PRELOAD_ALL
