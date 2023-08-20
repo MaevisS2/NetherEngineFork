@@ -180,7 +180,7 @@ class MasterEditorMenu extends MusicBeatState
 		else
 		{
 			Mods.currentModDirectory = directories[curDirectory];
-			directoryTxt.text = '< Loaded Mod Directory: ' + Mods.currentModDirectory + ' >';
+			directoryTxt.text = '< ' + Mods.currentModDirectory + ' >';
 		}
 		directoryTxt.text = directoryTxt.text.toUpperCase();
 	}
