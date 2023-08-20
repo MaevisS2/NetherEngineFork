@@ -14,6 +14,14 @@ import backend.StageData;
 
 import haxe.io.Path;
 
+#if LUA_ALLOWED
+import psychlua.*;
+#else
+import psychlua.FunkinLua;
+import psychlua.LuaUtils;
+import psychlua.HScript;
+#end
+
 class LoadingState extends MusicBeatState
 {
 	inline static var MIN_TIME = 1.0;
