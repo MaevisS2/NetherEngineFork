@@ -127,7 +127,7 @@ class FunkinLua {
 		set('score', 0);
 		set('misses', 0);
 		set('hits', 0);
-		set('combo', PlayState.combo);
+		set('combo', 0);
 
 		set('rating', 0);
 		set('ratingName', '');
