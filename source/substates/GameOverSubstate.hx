@@ -15,7 +15,7 @@ class GameOverSubstate extends MusicBeatSubstate
 	public var boyfriend:Character;
 	var camFollow:FlxObject;
 	var updateCamera:Bool = false;
-	var playingDeathSound:Bool = false;
+	public var playingDeathSound:Bool = false;
 
 	var stageSuffix:String = "";
 
