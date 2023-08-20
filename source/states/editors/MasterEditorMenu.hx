@@ -176,7 +176,7 @@ class MasterEditorMenu extends MusicBeatState
 	
 		WeekData.setDirectoryFromWeek();
 		if(directories[curDirectory] == null || directories[curDirectory].length < 1)
-			directoryTxt.text = '< No Mod Directory Loaded >';
+			directoryTxt.text = '< null >';
 		else
 		{
 			Mods.currentModDirectory = directories[curDirectory];
