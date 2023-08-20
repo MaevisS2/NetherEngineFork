@@ -7,6 +7,14 @@ import sys.io.File;
 
 import objects.AttachedSprite;
 
+#if LUA_ALLOWED
+import psychlua.*;
+#else
+import psychlua.FunkinLua;
+import psychlua.LuaUtils;
+import psychlua.HScript;
+#end
+
 class CreditsState extends MusicBeatState
 {
 	var curSelected:Int = -1;
