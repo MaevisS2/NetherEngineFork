@@ -61,7 +61,7 @@ class TitleState extends MusicBeatState
 	var textGroup:FlxGroup;
 	var ngSpr:FlxSprite;
 	
-	var titleTextColors:Array<FlxColor> = [0xFF33FFFF, 0xFF3333CC];
+	public var titleTextColors:Array<FlxColor> = [0xFF5700FA, 0xFF9381FA];
 	var titleTextAlphas:Array<Float> = [1, .64];
 
 	var curWacky:Array<String> = [];
@@ -74,13 +74,21 @@ class TitleState extends MusicBeatState
 
 	public static var updateVersion:String = '';
 
+	// Lua shit
+	public static var instance:PlayState;
+	public var luaArray:Array<FunkinLua> = [];
+	#if LUA_ALLOWED
+		private var luaDebugGroup:FlxTypedGroup<DebugLuaText>;
+	#end
+	public var introSoundsSuffix:String = '';
+
 	override public function create():Void
 	{
 		Paths.clearStoredMemory();
 		Paths.clearUnusedMemory();
 
 		#if LUA_ALLOWED
-		Mods.pushGlobalMods();
+		  Mods.pushGlobalMods();
 		#end
 		Mods.loadTopMod();
 
@@ -90,6 +98,19 @@ class TitleState extends MusicBeatState
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 
+		// SONG SPECIFIC SCRIPTS
+		#if LUA_ALLOWED
+		var foldersToCheck:Array<String> = Mods.directoriesWithFile(Paths.getPreloadPath(), 'images/');
+		for (folder in foldersToCheck)
+			for (file in FileSystem.readDirectory(folder))
+			{
+				if(file.toLowerCase().endsWith('.lua'))
+					new FunkinLua(folder + file);
+				//if(file.toLowerCase().endsWith('.hx'))
+					//initHScript(folder + file);
+			}
+		#end
+	
 		super.create();
 
 		FlxG.save.bind('funkin', CoolUtil.getSavePath());
@@ -97,27 +118,28 @@ class TitleState extends MusicBeatState
 		ClientPrefs.loadPrefs();
 
 		#if CHECK_FOR_UPDATES
-		if(ClientPrefs.data.checkForUpdates && !closedState) {
-			trace('checking for update');
-			var http = new haxe.Http("https://raw.githubusercontent.com/ShadowMario/FNF-PsychEngine/main/gitVersion.txt");
+			if(ClientPrefs.data.checkForUpdates && !closedState) {
+				trace('checking for update');
+				//OLHA AQUI MEVI
+				var http = new haxe.Http("https://raw.githubusercontent.com/ShadowMario/FNF-PsychEngine/main/gitVersion.txt");
 
-			http.onData = function (data:String)
-			{
-				updateVersion = data.split('\n')[0].trim();
-				var curVersion:String = MainMenuState.psychEngineVersion.trim();
-				trace('version online: ' + updateVersion + ', your version: ' + curVersion);
-				if(updateVersion != curVersion) {
-					trace('versions arent matching!');
-					mustUpdate = true;
+				http.onData = function (data:String)
+				{
+					updateVersion = data.split('\n')[0].trim();
+					var curVersion:String = MainMenuState.psychEngineVersion.trim();
+					trace('version online: ' + updateVersion + ', your version: ' + curVersion);
+					if(updateVersion != curVersion) {
+						trace('versions arent matching!');
+						mustUpdate = true;
+					}
 				}
-			}
 
-			http.onError = function (error) {
-				trace('error: $error');
-			}
+				http.onError = function (error) {
+					trace('error: $error');
+				}
 
-			http.request();
-		}
+				http.request();
+			}
 		#end
 
 		Highscore.load();
@@ -143,9 +165,9 @@ class TitleState extends MusicBeatState
 
 		FlxG.mouse.visible = false;
 		#if FREEPLAY
-		MusicBeatState.switchState(new FreeplayState());
+			MusicBeatState.switchState(new FreeplayState());
 		#elseif CHARTING
-		MusicBeatState.switchState(new ChartingState());
+			MusicBeatState.switchState(new ChartingState());
 		#else
 		if(FlxG.save.data.flashing == null && !FlashingState.leftState) {
 			FlxTransitionableState.skipNextTransIn = true;

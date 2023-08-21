@@ -3,7 +3,7 @@ package psychlua;
 class CallbackHandler
 {
 	public static inline function call(l:State, fname:String):Int
-	{
+	{/*
 		try
 		{
 			//trace('calling $fname');
@@ -14,11 +14,9 @@ class CallbackHandler
 			//so that it only loops on reserved/special functions
 			if(cbf == null) 
 			{
-				//trace('looping thru scripts');
 				for (script in PlayState.instance.luaArray)
 					if(script != null && script.lua == l)
 					{
-						//trace('found script');
 						cbf = script.callbacks.get(fname);
 						break;
 					}
@@ -34,7 +32,7 @@ class CallbackHandler
 			}
 
 			var ret:Dynamic = null;
-			/* return the number of results */
+			// return the number of results
 
 			ret = Reflect.callMethod(null,cbf,args);
 
@@ -49,6 +47,6 @@ class CallbackHandler
 			trace(e);
 			throw(e);
 		}
-		return 0;
-	}
+		
+	*/return 0;}
 }
